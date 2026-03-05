@@ -10,7 +10,20 @@ public abstract class Asistentes {
     protected String apellidos;
     protected String email;
     protected String emailvalidacion="^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+    public LocalDateTime getFregistro() {
+        return fregistro;
+    }
+
     protected LocalDateTime fregistro;
+
+    public String getDnienie() {
+        return dnienie;
+    }
+
+    public void setDnienie(String dnienie) {
+        this.dnienie = dnienie;
+    }
 
     public Asistentes(String dnienie,String nombre,String apellidos,String email,LocalDateTime fregistro) throws UsuarioInvalidoException {
         if (!dnienie.matches(dninievalidador)){
