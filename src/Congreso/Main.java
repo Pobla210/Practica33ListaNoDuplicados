@@ -84,8 +84,16 @@ public class Main {
                     }
                     break;
                 case 2:
-                    gestion.mostrarAsistentes();
-                    break;
+                    System.out.println("Como los quieres ordenar: 1)Por nombre 2)Por apellido 3)Por fecha");
+                    String orden=in.nextLine();
+                    int orden2=0;
+                    try {
+                        orden2=Integer.parseInt(orden);
+                    }
+                    catch (NumberFormatException nfe){
+                        System.out.println("Debes introducir un numero");
+                    }
+                    gestion.mostrarAsistentes(orden2);
                 case 3:
                     gestion.mostrarEstadisticas();
                     break;

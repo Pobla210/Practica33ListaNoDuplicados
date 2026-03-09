@@ -2,6 +2,8 @@ package Congreso;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.TreeSet;
 
 public class SistemaGestion {
     protected int contaponentes=0;
@@ -10,10 +12,9 @@ public class SistemaGestion {
     protected int contaasistentes=0;
     protected int tipo;
     ArrayList<Asistentes> listaasistentes=new ArrayList<>();
-    ArrayList<Ponentes> listaponentes=new ArrayList<>();
-    ArrayList<Estudiante> listaestudiantes=new ArrayList<>();
-    ArrayList<Profesionales> listaprofesionales=new ArrayList<>();
-
+    TreeSet<Asistentes> listaasistentesnombre=new TreeSet<>(Comparator.comparing(Asistentes::getNombre).thenComparing(Asistentes::getDnienie));
+    TreeSet<Asistentes> listaasistentesapellido=new TreeSet<>(Comparator.comparing(Asistentes::getApellidos).thenComparing(Asistentes::getDnienie));
+    TreeSet<Asistentes> listaasistentesfecha=new TreeSet<>(Comparator.comparing(Asistentes::getFregistro).thenComparing(Asistentes::getDnienie));
     public void registrarAsistente(int tipo, String dnienie, String nombre, String apellidos,
                                    String email, LocalDateTime fregistro, String especialidad,
                                    String empresa,String cargo,String centroeducativo)throws UsuarioInvalidoException{
@@ -23,21 +24,27 @@ public class SistemaGestion {
             case 1:
                 asis=new Ponentes(dnienie,nombre,apellidos,email,fregistro,especialidad);
                 listaasistentes.add(asis);
-                listaponentes.add((Ponentes) asis);
+                listaasistentesnombre.add(asis);
+                listaasistentesapellido.add(asis);
+                listaasistentesfecha.add(asis);
                 contaponentes++;
                 contaasistentes++;
                 break;
             case 2:
                 asis=new Estudiante(dnienie, nombre, apellidos, email, fregistro, centroeducativo);
                 listaasistentes.add(asis);
-                listaestudiantes.add((Estudiante)asis);
+                listaasistentesnombre.add(asis);
+                listaasistentesapellido.add(asis);
+                listaasistentesfecha.add(asis);
                 contaestudiantes++;
                 contaasistentes++;
                 break;
             case 3:
                 asis=new Profesionales(dnienie, nombre, apellidos, email, fregistro, empresa, cargo);
                 listaasistentes.add(asis);
-                listaprofesionales.add((Profesionales)asis);
+                listaasistentesnombre.add(asis);
+                listaasistentesapellido.add(asis);
+                listaasistentesfecha.add(asis);
                 contaprofesionales++;
                 contaasistentes++;
                 break;
@@ -46,9 +53,37 @@ public class SistemaGestion {
         }
     }
 
-    public void mostrarAsistentes(){
-        for (Asistentes asi: listaasistentes){
-            System.out.println(asi);
+    public void mostrarAsistentes(int orden){
+        switch (orden){
+            case 1:
+                mostrarPorNombre();
+                break;
+            case 2:
+                mostrarPorApellidos();
+                break;
+            case 3:
+                mostrarPorFecha();
+                break;
+            default:
+                System.out.println("Opcion no valida");
+        }
+    }
+
+    public void mostrarPorNombre(){
+        for (Asistentes a : listaasistentesnombre){
+            System.out.println(a);
+        }
+    }
+
+    public void mostrarPorApellidos(){
+        for (Asistentes a : listaasistentesapellido){
+            System.out.println(a);
+        }
+    }
+
+    public void mostrarPorFecha(){
+        for (Asistentes a : listaasistentesfecha){
+            System.out.println(a);
         }
     }
 

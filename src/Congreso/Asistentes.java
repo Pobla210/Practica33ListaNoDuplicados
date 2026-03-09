@@ -11,6 +11,22 @@ public abstract class Asistentes {
     protected String email;
     protected String emailvalidacion="^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
     public LocalDateTime getFregistro() {
         return fregistro;
     }
