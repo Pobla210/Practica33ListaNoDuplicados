@@ -94,7 +94,7 @@ public class Main {
                     }
                     gestion.mostrarAsistentes(orden2);
                 case 3:
-                    gestion.mostrarEstadisticas();
+                    System.out.println(gestion.mostrarEstadisticas());
                     break;
                 case 4:
                     System.out.println("Dime el DNI que deseas buscar");
