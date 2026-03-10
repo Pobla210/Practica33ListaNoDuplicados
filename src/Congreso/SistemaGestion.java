@@ -10,7 +10,6 @@ public class SistemaGestion {
     protected int contaestudiantes=0;
     protected int contaprofesionales=0;
     protected int contaasistentes=0;
-    protected int tipo;
     ArrayList<Asistentes> listaasistentes=new ArrayList<>();
     TreeSet<Asistentes> listaasistentesnombre=new TreeSet<>(Comparator.comparing(Asistentes::getNombre).thenComparing(Asistentes::getDnienie));
     TreeSet<Asistentes> listaasistentesapellido=new TreeSet<>(Comparator.comparing(Asistentes::getApellidos).thenComparing(Asistentes::getDnienie));
