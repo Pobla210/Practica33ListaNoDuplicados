@@ -116,7 +116,11 @@ public class SistemaGestion {
         }
         else {
             for (int i=0;i<listaasistentes.size();i++){
+                    Asistentes listatree=listaasistentes.get(i);
                     if (listaasistentes.get(i).getDnienie().equalsIgnoreCase(DNI)){
+                        listaasistentesnombre.remove(listatree);
+                        listaasistentesapellido.remove(listatree);
+                        listaasistentesfecha.remove(listatree);
                         listaasistentes.remove(i);
                         System.out.println("Asistente eliminado correctamente");
                         return;
